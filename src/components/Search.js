@@ -1,16 +1,5 @@
 import React from 'react';
-
-// api key
-const key = require('../Key.js');
-
-// cors proxy
-const proxy = 'https://cors-anywhere.herokuapp.com/';
-
-// returns a json containing data from an API call
-async function get(url) {
-    const response = await fetch(url);
-    return response.json();
-}
+import { Link } from 'react-router-dom';
 
 // a search component that contains a selection of regions and inut for summoner name
 class Search extends React.Component {
@@ -18,13 +7,7 @@ class Search extends React.Component {
     state = {
         // region host for api call
         region: 'na1',
-        // summoner attributes to display
-        summonerId: undefined,
-        summonerName: undefined,
-        profileIconId: undefined,
-        revisionDate: undefined,
-        summonerLevel: undefined,
-
+        summonerName: undefined
     }
 
     // updates the region selected
@@ -33,34 +16,17 @@ class Search extends React.Component {
         this.setState({ region: event.target.value });
     }
 
-    // performs a call to the LoL API to search for summoners by summoner name
-    getSummonerData = async (event) => {
+    // updates the summoner name in the input box
+    handleInputChange = (event) => {
         event.preventDefault();
-
-        // summoner name from input box
-        const summonerName = event.target.elements.summonerSearch.value.trim();
-        // region the summoner is in
-        const regionHost = this.state.region;
-
-        // API call for retrieving summoner info
-        const summonerJson = await get(`${proxy}https://${regionHost}.api.riotgames.com/lol/summoner/v3/summoners/by-name/${summonerName}?api_key=${key.API_KEY}`);
-        console.log(summonerJson);
-
-        // record summoner data
-        this.setState({
-            summonerId: summonerJson.id,
-            summonerName: summonerJson.name,
-            profileIconId: summonerJson.profileIconId,
-            revisionDate: summonerJson.revisionDate,
-            summonerLevel: summonerJson.summonerLevel
-        });
+        this.setState({ summonerName: event.target.value.trim() });
     }
 
     render() {
         return (
             <div>
                 <h3>Search for Summoner:</h3>
-                <form onSubmit={this.getSummonerData}>
+                <form>
                     <select id="regionSelect" onChange={this.handleSelectChange}>
                         <option value="na1">NA</option>
                         <option value="euw1">EUW</option>
@@ -68,8 +34,17 @@ class Search extends React.Component {
                         <option value="eun1">EUNE</option>
                         <option value="br1">BR</option>
                     </select>
-                    <input type="text" name="summonerSearch" placeholder="Enter a summoner name..."/>
-                    <button>Search</button>
+
+                    <input 
+                        type="text" 
+                        name="summonerSearch" 
+                        placeholder="Enter a summoner name..." 
+                        onChange={this.handleInputChange} 
+                    />
+
+                    <Link to={{ pathname: `/summoner/${this.state.region}-${this.state.summonerName}` }}>
+                        <button>Search</button>
+                    </Link>
                 </form>
             </div>
         );
