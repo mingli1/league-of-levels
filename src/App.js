@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import Search from './components/Search';
+import Router from './components/Router';
 
 class App extends React.Component {
 
     render() {
         return (
             <div className="App">
-                <Search />
+                <Router />
             </div>
         );
     }

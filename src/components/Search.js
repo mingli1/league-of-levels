@@ -1,7 +1,7 @@
 import React from 'react';
 
 // api key
-const key = require('./../Key.js');
+const key = require('../Key.js');
 
 // cors proxy
 const proxy = 'https://cors-anywhere.herokuapp.com/';
