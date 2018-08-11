@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// a search component that contains a selection of regions and inut for summoner name
+// a search component that contains a selection of regions and input for summoner name
 class Search extends React.Component {
 
     state = {

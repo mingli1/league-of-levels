@@ -26,6 +26,7 @@ class Profile extends React.Component {
     }
 
     // performs a call to the LoL API to search for summoners by summoner name
+    // and retrieve champion mastery data 
     componentDidMount = async () => {
         // getting region code and summoner name from the url
         const raw = this.props.match.params.sid;
