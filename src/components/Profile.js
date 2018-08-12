@@ -1,5 +1,6 @@
 import React from 'react';
 import PlayerProfile from './PlayerProfile';
+import Mastery from './Mastery';
 
 // api key
 const key = require('../Key.js');
@@ -20,6 +21,8 @@ class Profile extends React.Component {
     state = {
         // data from api in json form
         summonerJson: undefined,
+        masteryJson: undefined,
+        totalMastery: undefined,
         // the abbreviated region name, not the region host code for op.gg link
         regionName: 'NA'
     }
@@ -47,16 +50,22 @@ class Profile extends React.Component {
 
         // API call for retrieving summoner info
         const summonerJson = await get(`${proxy}https://${regionHost}.api.riotgames.com/lol/summoner/v3/summoners/by-name/${summonerName}?api_key=${key.API_KEY}`);
-        console.log(summonerJson);
-
-        // record summoner data
         this.setState({ summonerJson: summonerJson });
+
+        // API call for total summoner mastery
+        const totalMasteryJson = await get(`${proxy}https://${regionHost}.api.riotgames.com/lol/champion-mastery/v3/scores/by-summoner/${summonerJson.id}?api_key=${key.API_KEY}`);
+        this.setState({ totalMastery: totalMasteryJson });
+
+        // API call for champion mastery data
+        const masteryJson = await get(`${proxy}https://${regionHost}.api.riotgames.com/lol/champion-mastery/v3/champion-masteries/by-summoner/${summonerJson.id}?api_key=${key.API_KEY}`);
+        this.setState({ masteryJson: masteryJson });
     }
 
     render() {
         return (
             <div>
                 <PlayerProfile {...this.state.summonerJson} regionName={this.state.regionName} />
+                <Mastery masteryJson={this.state.masteryJson} totalMastery={this.state.totalMastery} />
             </div>
         );
     }
