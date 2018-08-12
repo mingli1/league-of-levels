@@ -12,6 +12,7 @@ class PlayerProfile extends React.Component {
     }
 
     render() {
+        const region = this.props.regionName;
         const summonerName = this.props.name;
         const summonerLevel = this.props.summonerLevel;
         const profileIconId = this.props.profileIconId;
@@ -19,8 +20,8 @@ class PlayerProfile extends React.Component {
         const date = new Date(revisionDate).toLocaleString();
 
         // encoded url to op.gg profile
-        var opgg = `https://${this.props.regionName}.op.gg/summoner/userName=${encodeURIComponent(summonerName)}`;
-        if (this.props.regionName === 'kr') {
+        var opgg = `https://${region}.op.gg/summoner/userName=${encodeURIComponent(summonerName)}`;
+        if (region === 'KR') {
             opgg = `https://www.op.gg/summoner/userName=${encodeURIComponent(summonerName)}`;
         }
 
@@ -28,7 +29,7 @@ class PlayerProfile extends React.Component {
             <div>
                 <img src={this.getIcon(profileIconId)} alt={profileIconId}
                     width="100px" height="100px" />
-                <p>{summonerName}</p>
+                <p>{'(' + region + ') ' + summonerName}</p>
                 <p>Level: {summonerLevel}</p>
                 <p>Last active: {date}</p>
                 <a href={opgg} target="_blank">op.gg</a>

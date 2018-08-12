@@ -26,10 +26,11 @@ class Profile extends React.Component {
 
     // returns the region name from region host code
     getRegionName = (host) => {
-        if (host === 'na1') return 'na';
-        if (host === 'br1') return 'br';
-        if (host === 'euw1') return 'euw';
-        if (host === 'eun1') return 'eune';
+        if (host === 'na1') return 'NA';
+        if (host === 'br1') return 'BR';
+        if (host === 'euw1') return 'EUW';
+        if (host === 'eun1') return 'EUNE';
+        if (host === 'kr') return 'KR';
         return host;
     }
 
