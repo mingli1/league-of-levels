@@ -1,4 +1,5 @@
 import React from 'react';
+import PlayerProfile from './PlayerProfile';
 
 // api key
 const key = require('../Key.js');
@@ -17,12 +18,19 @@ async function get(url) {
 class Profile extends React.Component {
 
     state = {
-        // summoner attributes
-        summonerId: undefined,
-        summonerName: undefined,
-        profileIconId: undefined,
-        revisionDate: undefined,
-        summonerLevel: undefined
+        // data from api in json form
+        summonerJson: undefined,
+        // the abbreviated region name, not the region host code for op.gg link
+        regionName: 'NA'
+    }
+
+    // returns the region name from region host code
+    getRegionName = (host) => {
+        if (host === 'na1') return 'na';
+        if (host === 'br1') return 'br';
+        if (host === 'euw1') return 'euw';
+        if (host === 'eun1') return 'eune';
+        return host;
     }
 
     // performs a call to the LoL API to search for summoners by summoner name
@@ -34,35 +42,20 @@ class Profile extends React.Component {
         const regionHost = data[0];
         const summonerName = data[1];
 
+        this.setState({ regionName: this.getRegionName(regionHost) })
+
         // API call for retrieving summoner info
         const summonerJson = await get(`${proxy}https://${regionHost}.api.riotgames.com/lol/summoner/v3/summoners/by-name/${summonerName}?api_key=${key.API_KEY}`);
         console.log(summonerJson);
 
         // record summoner data
-        this.setState({
-            summonerId: summonerJson.id,
-            summonerName: summonerJson.name,
-            profileIconId: summonerJson.profileIconId,
-            revisionDate: summonerJson.revisionDate,
-            summonerLevel: summonerJson.summonerLevel
-        });
-    }
-
-    // retrieves the icon url for a given profile icon id
-    getIcon = (id) => {
-        return `http://ddragon.leagueoflegends.com/cdn/${key.GAME_VERSION}/img/profileicon/${id}.png`;
+        this.setState({ summonerJson: summonerJson });
     }
 
     render() {
         return (
             <div>
-                <h3>{this.state.summonerName}</h3>
-                <h4>ID: {this.state.summonerId}</h4>
-                <p>Level: {this.state.summonerLevel}</p>
-                <p>Profile icon:
-                    <img src={this.getIcon(this.state.profileIconId)} alt={this.state.profileIconId} />
-                </p>
-                <p>Time since last active: {this.state.revisionDate}</p>
+                <PlayerProfile {...this.state.summonerJson} regionName={this.state.regionName} />
             </div>
         );
     }
