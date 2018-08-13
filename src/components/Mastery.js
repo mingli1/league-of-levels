@@ -42,15 +42,26 @@ class Mastery extends React.Component {
                                     (<img src={window.location.origin + '/images/chest.png'} 
                                         alt="hextech chest"
                                         width="32px" height="32px" />) : null;
+                                const pointsToNextLevel = (champion.championLevel >= 5) ?
+                                    'Max Level' : 
+                                    (champion.championPointsSinceLastLevel.toLocaleString() + ' / ' + 
+                                        (champion.championPointsSinceLastLevel + 
+                                         champion.championPointsUntilNextLevel).toLocaleString());
+
+                                var tokens = champion.tokensEarned;
+                                if (champion.championLevel < 5) tokens = 'N/A';
+                                else if (champion.championLevel === 5) tokens += ' / 2';
+                                else if (champion.championLevel === 6) tokens += ' / 3';
+                                else tokens = 'Max';
 
                                 return (
                                     <tr key={index}>
                                         <td>{champName}</td>
                                         <td>{champion.championLevel}</td>
                                         <td>{chest}</td>
-                                        <td>{champion.championPoints}</td>
-                                        <td>{champion.championPointsUntilNextLevel}</td>
-                                        <td>{champion.tokensEarned}</td>
+                                        <td>{champion.championPoints.toLocaleString()}</td>
+                                        <td>{pointsToNextLevel}</td>
+                                        <td>{tokens}</td>
                                         <td>{new Date(champion.lastPlayTime).toLocaleString()}</td>
                                     </tr>
                                 );
