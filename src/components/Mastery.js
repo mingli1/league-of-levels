@@ -1,7 +1,11 @@
 import React from 'react';
 
+var key = require('../Key.js');
+
 // champion id to champion name mapping
 const champions = require('../data/Champions.js');
+// champion id to champion key mapping
+const champKeys = require('../data/ChampionKeys.js');
 
 // represents a table that displays champion mastery data
 class Mastery extends React.Component {
@@ -28,11 +32,22 @@ class Mastery extends React.Component {
                                 <th>Last Played</th>
                             </tr>
                             {this.props.masteryJson.map(function (champion, index) {
+                                const champName = 
+                                    <p><img src={`http://ddragon.leagueoflegends.com/cdn/${key.GAME_VERSION}/img/champion/${champKeys.keys[champion.championId]}.png`}
+                                            alt={champion.championId}
+                                            width="24px" height="24px" />
+                                        {champions.champs[champion.championId]}
+                                    </p>;
+                                const chest = champion.chestGranted ?
+                                    (<img src={window.location.origin + '/images/chest.png'} 
+                                        alt="hextech chest"
+                                        width="32px" height="32px" />) : null;
+
                                 return (
                                     <tr key={index}>
-                                        <td>{champions.champs[champion.championId]}</td>
+                                        <td>{champName}</td>
                                         <td>{champion.championLevel}</td>
-                                        <td>{champion.chestGranted.toString()}</td>
+                                        <td>{chest}</td>
                                         <td>{champion.championPoints}</td>
                                         <td>{champion.championPointsUntilNextLevel}</td>
                                         <td>{champion.tokensEarned}</td>
