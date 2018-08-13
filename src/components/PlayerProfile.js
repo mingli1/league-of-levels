@@ -1,6 +1,6 @@
 import React from 'react';
 
-const key = require('../Key.js');
+var key = require('../Key.js');
 
 // part of the profile component that displays summoner name, icon, level, etc
 // props contains the summoner json

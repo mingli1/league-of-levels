@@ -140,6 +140,7 @@ module.exports = {
         96: "Kog'Maw",
         103: "Ahri",
         133: "Quinn",
-        7: "LeBlanc"
+        7: "LeBlanc",
+        81: "Ezreal"
     }
 }
