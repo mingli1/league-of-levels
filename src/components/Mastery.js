@@ -19,19 +19,19 @@ class Mastery extends React.Component {
             <div>
                 <p>Total champion mastery level: {totalChampMastery}</p>
 
-                {this.props.masteryJson == null ? null : (
-                    <table width="100%">
-                        <tbody>
-                            <tr>
-                                <th>Champion</th>
-                                <th>Mastery Level</th>
-                                <th>Chest Granted</th>
-                                <th>Total Points</th>
-                                <th>Points to Next Level</th>
-                                <th>Tokens</th>
-                                <th>Last Played</th>
-                            </tr>
-                            {this.props.masteryJson.map(function (champion, index) {
+                <table width="100%">
+                    <tbody>
+                        <tr>
+                            <th>Champion</th>
+                            <th>Mastery Level</th>
+                            <th>Chest Granted</th>
+                            <th>Total Points</th>
+                            <th>Points to Next Level</th>
+                            <th>Tokens</th>
+                            <th>Last Played</th>
+                        </tr>
+                        {this.props.masteryJson == null ? null : 
+                            (this.props.masteryJson.map(function (champion, index) {
                                 const champName = 
                                     <p><img src={`http://ddragon.leagueoflegends.com/cdn/${key.GAME_VERSION}/img/champion/${champKeys.keys[champion.championId]}.png`}
                                             alt={champion.championId}
@@ -65,10 +65,12 @@ class Mastery extends React.Component {
                                         <td>{new Date(champion.lastPlayTime).toLocaleString()}</td>
                                     </tr>
                                 );
-                            })}
-                        </tbody>
-                    </table>
-                )}
+                            }))
+                        }
+                    </tbody>
+                </table>
+                
+                <p>Note: Champions not displayed have not been played by this summoner.</p>
             </div>
         );
     }

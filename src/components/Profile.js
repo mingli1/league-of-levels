@@ -54,8 +54,15 @@ class Profile extends React.Component {
     render() {
         return (
             <div>
-                <PlayerProfile {...this.state.summonerJson} regionName={this.state.regionName} />
-                <Mastery masteryJson={this.state.masteryJson} totalMastery={this.state.totalMastery} />
+                { (typeof this.state.summonerJson !== 'undefined' && 
+                    typeof this.state.totalMastery !== 'undefined' &&
+                    typeof this.state.masteryJson !== 'undefined') ? 
+                        (<div>
+                            <PlayerProfile {...this.state.summonerJson} regionName={this.state.regionName} />
+                            <Mastery masteryJson={this.state.masteryJson} totalMastery={this.state.totalMastery} />
+                        </div>) :
+                        <p>Fetching...</p> 
+                }
             </div>
         );
     }
