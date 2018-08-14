@@ -48,15 +48,22 @@ class Mastery extends React.Component {
 
     // sorts the data array in state either by ascending or descending
     sort = (key) => {
+        var sortOrderCopy = {...this.state.sortOrder};
+
         // check if column is already selected to sort by either asc or desc
-        if (this.state.sortOrder[key] !== 0) {
+        if (sortOrderCopy[key] !== 0) {
+            if (sortOrderCopy[key] === 1) sortOrderCopy[key] = -1;
+            else sortOrderCopy[key] = 1;
+
             // sorting is reversed
             let sorted = this.state.data.reverse();
-            this.setState({ data: sorted });
+            this.setState({ 
+                data: sorted,
+                sortOrder: sortOrderCopy
+            });
         }
         // if clicked on a "new" column then reset all others to 0 and set that column to desc
         else {
-            let sortOrderCopy = {...this.state.sortOrder};
             for (var col in sortOrderCopy) {
                 sortOrderCopy[col] = 0;
             }
@@ -71,6 +78,17 @@ class Mastery extends React.Component {
         }
     }
 
+    // returns the sorting icon next to the column header depending on sort status
+    getSortIcon = (key) => {
+        if (this.state.sortOrder[key] === 0) 
+            return <i className="material-icons">unfold_more</i>;
+        else if (this.state.sortOrder[key] === -1) 
+            return <i className="material-icons">expand_more</i>;
+        else if (this.state.sortOrder[key] === 1) 
+            return <i className="material-icons">expand_less</i>;
+        return null;
+    }
+
     render() {
         return (
             <div>
@@ -80,14 +98,30 @@ class Mastery extends React.Component {
                     (<table width="100%">
                         <tbody>
                             <tr>
-                                <th onClick={() => this.sort('index')}>#</th>
-                                <th onClick={() => this.sort('championName')}>Champion</th>
-                                <th onClick={() => this.sort('championLevel')}>Mastery Level</th>
-                                <th onClick={() => this.sort('chestGranted')}>Chest Granted</th>
-                                <th onClick={() => this.sort('championPoints')}>Total Points</th>
-                                <th onClick={() => this.sort('championPointsSinceLastLevel')}>Points to Next Level</th>
-                                <th onClick={() => this.sort('tokensEarned')}>Tokens</th>
-                                <th onClick={() => this.sort('lastPlayTime')}>Last Played</th>
+                                <th onClick={() => this.sort('index')}>
+                                    #{this.getSortIcon('index')}
+                                </th>
+                                <th onClick={() => this.sort('championName')}>
+                                    Champion{this.getSortIcon('championName')}
+                                </th>
+                                <th onClick={() => this.sort('championLevel')}>
+                                    Mastery Level{this.getSortIcon('championLevel')}
+                                </th>
+                                <th onClick={() => this.sort('chestGranted')}>
+                                    Chest Granted{this.getSortIcon('chestGranted')}
+                                </th>
+                                <th onClick={() => this.sort('championPoints')}>
+                                    Total Points{this.getSortIcon('championPoints')}
+                                </th>
+                                <th onClick={() => this.sort('championPointsSinceLastLevel')}>
+                                    Points to Next Level{this.getSortIcon('championPointsSinceLastLevel')}
+                                </th>
+                                <th onClick={() => this.sort('tokensEarned')}>
+                                    Tokens{this.getSortIcon('tokensEarned')}
+                                </th>
+                                <th onClick={() => this.sort('lastPlayTime')}>
+                                    Last Played{this.getSortIcon('lastPlayTime')}
+                                </th>
                             </tr>
 
                             {this.state.data.map(function (champion, index) {
