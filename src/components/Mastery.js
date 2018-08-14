@@ -12,7 +12,18 @@ class Mastery extends React.Component {
 
     state = {
         // a copy of the masteryJson data
-        data: undefined
+        data: undefined,
+        // object for storing how to sort (-1 - desc, 0 - none, 1 - asc)
+        sortOrder: {
+            index: 0,
+            championName: 0,
+            championLevel: 0,
+            chestGranted: 0,
+            championPoints: -1,
+            championPointsSinceLastLevel: 0,
+            tokensEarned: 0,
+            lastPlayTime: 0
+        }
     }
 
     componentDidMount = () => {
@@ -35,20 +46,29 @@ class Mastery extends React.Component {
         };
     }
 
-    // compare function sorting by ascending 
-    compareAsc = (key) => {
-        return function (a, b) {
-            if (a[key] < b[key]) return 1;
-            if (a[key] > b[key]) return -1;
-            return 0;
-        };
-    }
-
     // sorts the data array in state either by ascending or descending
     sort = (key) => {
-        let arrayCopy = [...this.state.data];
-        arrayCopy.sort(this.compareDesc(key));
-        this.setState({ data: arrayCopy });
+        // check if column is already selected to sort by either asc or desc
+        if (this.state.sortOrder[key] !== 0) {
+            // sorting is reversed
+            let sorted = this.state.data.reverse();
+            this.setState({ data: sorted });
+        }
+        // if clicked on a "new" column then reset all others to 0 and set that column to desc
+        else {
+            let sortOrderCopy = {...this.state.sortOrder};
+            for (var col in sortOrderCopy) {
+                sortOrderCopy[col] = 0;
+            }
+            sortOrderCopy[key] = -1;
+
+            let arrayCopy = [...this.state.data];
+            arrayCopy.sort(this.compareDesc(key));
+            this.setState({
+                data: arrayCopy,
+                sortOrder: sortOrderCopy
+            });
+        }
     }
 
     render() {
