@@ -1,4 +1,5 @@
 import React from 'react';
+
 import PlayerProfile from './PlayerProfile';
 import Mastery from './Mastery';
 
