@@ -1,4 +1,5 @@
 import React from 'react';
+import '../style/Mastery.css';
 
 var key = require('../Key.js');
 
@@ -126,7 +127,8 @@ class Mastery extends React.Component {
                 />
 
                 {this.state.data == null ? null : 
-                    (<table width="100%">
+                    (<div className="table-responsive">
+                        <table className="table-striped" width="100%">
                         <tbody>
                             <tr>
                                 <th onClick={() => this.sort('index')}>
@@ -192,7 +194,8 @@ class Mastery extends React.Component {
                                 );
                             })}
                         </tbody>
-                    </table>)}
+                    </table>
+                    </div>)}
 
                 <p>Note: Champions not displayed have not been played by this summoner.</p>
             </div>
