@@ -36,6 +36,7 @@ class Profile extends React.Component {
         const data = raw.split('-');
         const regionHost = data[0];
         const summonerName = data[1];
+        document.title = summonerName + ' - League of Levels';
 
         this.setState({ regionName: this.getRegionName(regionHost) })
 
