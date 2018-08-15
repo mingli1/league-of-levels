@@ -11,6 +11,7 @@ const champKeys = require('../data/ChampionKeys.js');
 class Mastery extends React.Component {
 
     state = {
+        initialData: undefined,
         // a copy of the masteryJson data
         data: undefined,
         // object for storing how to sort (-1 - desc, 0 - none, 1 - asc)
@@ -34,7 +35,10 @@ class Mastery extends React.Component {
             masteryCopy[i]['index'] = i + 1;
             masteryCopy[i]['championName'] = champions.champs[masteryCopy[i].championId];
         }
-        this.setState({ data: masteryCopy });
+        this.setState({ 
+            data: masteryCopy,
+            initialData: masteryCopy
+        });
     }
 
     // compare function sorting by descending
@@ -78,6 +82,28 @@ class Mastery extends React.Component {
         }
     }
 
+    // search filter by champion name updated as champSearch changes
+    search = (event) => {
+        event.preventDefault();
+
+        var sortOrderCopy = {...this.state.sortOrder};
+        for (var col in sortOrderCopy) {
+            sortOrderCopy[col] = 0;
+        }
+        sortOrderCopy['championPoints'] = -1;
+        this.setState({ sortOrder: sortOrderCopy });
+
+        var query = event.target.value.trim().toLowerCase();
+        var arrayCopy = [];
+        for (var i = 0; i < this.state.initialData.length; i++) {
+            var champName = this.state.initialData[i]['championName'].toLowerCase();
+            if (champName.startsWith(query)) {
+                arrayCopy.push({...this.state.initialData[i]});
+            }
+        }
+        this.setState({ data: arrayCopy });
+    }
+
     // returns the sorting icon next to the column header depending on sort status
     getSortIcon = (key) => {
         if (this.state.sortOrder[key] === 0) 
@@ -93,6 +119,11 @@ class Mastery extends React.Component {
         return (
             <div>
                 <p>Total champion mastery level: {this.props.totalMastery}</p>
+                <input type="text" 
+                    placeholder="Search for champion..." 
+                    name="champSearch" 
+                    onChange={this.search}
+                />
 
                 {this.state.data == null ? null : 
                     (<table width="100%">
