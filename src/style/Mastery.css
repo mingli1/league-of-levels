@@ -1,0 +1,61 @@
+.tableWrapper {
+    overflow-x: auto;
+}
+
+.masteryTable {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid #dddddd;
+}
+
+.table-striped > tbody > tr > td {
+    border-top: 1px solid #dddddd;
+}
+
+.tableHeader {
+    background-color: #4f84c4;
+}
+
+.tableHeader th {
+    height: 50px;
+    color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+}
+
+.tableHeader th:hover {
+    cursor: pointer;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.tableHeader th span {
+    padding-left: 20px;
+}
+
+.material-icons {
+    vertical-align: middle;
+}
+
+.table > thead > tr > th {
+    border-bottom: 0;
+}
+
+.champ {
+    display: flex;
+    align-items: center;
+}
+
+.champName {
+    margin-left: 16px;
+}
+
+tr {
+    text-align: center;
+    vertical-align: middle;
+    height: 40px;
+}

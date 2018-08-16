@@ -127,43 +127,46 @@ class Mastery extends React.Component {
                 />
 
                 {this.state.data == null ? null : 
-                    (<div className="table-responsive">
-                        <table className="table-striped" width="100%">
-                        <tbody>
-                            <tr>
-                                <th onClick={() => this.sort('index')}>
-                                    #{this.getSortIcon('index')}
-                                </th>
-                                <th onClick={() => this.sort('championName')}>
-                                    Champion{this.getSortIcon('championName')}
-                                </th>
-                                <th onClick={() => this.sort('championLevel')}>
-                                    Mastery Level{this.getSortIcon('championLevel')}
-                                </th>
-                                <th onClick={() => this.sort('chestGranted')}>
-                                    Chest Granted{this.getSortIcon('chestGranted')}
-                                </th>
-                                <th onClick={() => this.sort('championPoints')}>
-                                    Total Points{this.getSortIcon('championPoints')}
-                                </th>
-                                <th onClick={() => this.sort('championPointsSinceLastLevel')}>
-                                    Points to Next Level{this.getSortIcon('championPointsSinceLastLevel')}
-                                </th>
-                                <th onClick={() => this.sort('tokensEarned')}>
-                                    Tokens{this.getSortIcon('tokensEarned')}
-                                </th>
-                                <th onClick={() => this.sort('lastPlayTime')}>
-                                    Last Played{this.getSortIcon('lastPlayTime')}
-                                </th>
-                            </tr>
+                    (<div className="tableWrapper">
+                        <table className="table-striped masteryTable" width="100%">
+                            <thead>
+                                <tr className="tableHeader">
+                                    <th onClick={() => this.sort('index')}>
+                                        <span>#</span>{this.getSortIcon('index')}
+                                    </th>
+                                    <th onClick={() => this.sort('championName')}>
+                                        <span>Champion</span>{this.getSortIcon('championName')}
+                                    </th>
+                                    <th onClick={() => this.sort('championLevel')}>
+                                        <span>Mastery Level</span>{this.getSortIcon('championLevel')}
+                                    </th>
+                                    <th onClick={() => this.sort('chestGranted')}>
+                                        <span>Chest Granted</span>{this.getSortIcon('chestGranted')}
+                                    </th>
+                                    <th onClick={() => this.sort('championPoints')}>
+                                        <span>Total Points</span>{this.getSortIcon('championPoints')}
+                                    </th>
+                                    <th onClick={() => this.sort('championPointsSinceLastLevel')}>
+                                        <span>Points to Next Level</span>{this.getSortIcon('championPointsSinceLastLevel')}
+                                    </th>
+                                    <th onClick={() => this.sort('tokensEarned')}>
+                                        <span>Tokens</span>{this.getSortIcon('tokensEarned')}
+                                    </th>
+                                    <th onClick={() => this.sort('lastPlayTime')}>
+                                        <span>Last Played</span>{this.getSortIcon('lastPlayTime')}
+                                    </th>
+                                </tr>
+                            </thead>
 
+                        <tbody>
                             {this.state.data.map(function (champion, index) {
                                 const champName = 
-                                    <p><img src={`http://ddragon.leagueoflegends.com/cdn/${key.GAME_VERSION}/img/champion/${champKeys.keys[champion.championId]}.png`}
-                                            alt={champion.championId}
-                                            width="24px" height="24px" />
-                                        {champion.championName}
-                                    </p>;
+                                    <div className="champ">
+                                        <img src={`http://ddragon.leagueoflegends.com/cdn/${key.GAME_VERSION}/img/champion/${champKeys.keys[champion.championId]}.png`}
+                                                alt={champion.championId}
+                                                width="32px" height="32px" />
+                                        <span className="champName">{champion.championName}</span>
+                                    </div>;
                                 const chest = champion.chestGranted ?
                                     (<img src={window.location.origin + '/images/chest.png'} 
                                         alt="hextech chest"
@@ -181,15 +184,15 @@ class Mastery extends React.Component {
                                 else tokens = 'Max';
 
                                 return (
-                                    <tr key={index}>
-                                        <td>{champion.index}</td>
-                                        <td>{champName}</td>
-                                        <td>{champion.championLevel}</td>
-                                        <td>{chest}</td>
-                                        <td>{champion.championPoints.toLocaleString()}</td>
-                                        <td>{pointsToNextLevel}</td>
-                                        <td>{tokens}</td>
-                                        <td>{new Date(champion.lastPlayTime).toLocaleString()}</td>
+                                    <tr className="dataRow" key={index}>
+                                        <td><span>{champion.index}</span></td>
+                                        <td><span>{champName}</span></td>
+                                        <td><span>{champion.championLevel}</span></td>
+                                        <td><span>{chest}</span></td>
+                                        <td><span>{champion.championPoints.toLocaleString()}</span></td>
+                                        <td><span>{pointsToNextLevel}</span></td>
+                                        <td><span>{tokens}</span></td>
+                                        <td><span>{new Date(champion.lastPlayTime).toLocaleString()}</span></td>
                                     </tr>
                                 );
                             })}
