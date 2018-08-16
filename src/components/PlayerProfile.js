@@ -1,4 +1,5 @@
 import React from 'react';
+import '../style/PlayerProfile.css';
 
 var key = require('../Key.js');
 
@@ -26,13 +27,27 @@ class PlayerProfile extends React.Component {
         }
 
         return (
-            <div>
-                <img className="img-circle" src={this.getIcon(profileIconId)} alt={profileIconId}
-                    width="100px" height="100px" />
-                <p>{'(' + region + ') ' + summonerName}</p>
-                <p>Level: {summonerLevel}</p>
-                <p>Last active: {date}</p>
-                <a href={opgg} target="_blank">op.gg</a>
+            <div className="profile">
+                <div className="row header">
+                    <div className="col-xs-1">
+                        <img className="img-circle" src={this.getIcon(profileIconId)} alt={profileIconId}
+                            width="100px" height="100px" />
+                    </div>
+                    <div className="col-xs-8">
+                        <div className="playerInfo">
+                            <p id="summonerName"><b>{'(' + region + ') ' + summonerName}</b></p>
+                            <p id="summonerLevel">Level: {summonerLevel}</p>
+                            <p id="lastActive">Last active: {date}</p>
+                        </div>
+                    </div>
+                    <div className="col-xs-3">
+                        <a id="opgg" href={opgg} target="_blank">
+                            <img src={window.location.origin + '/images/opgg.png'} alt="op.gg" 
+                                width="96px" height="24px" />
+                        </a>
+                    </div>
+                </div>
+                <hr />
             </div>
         );
     }

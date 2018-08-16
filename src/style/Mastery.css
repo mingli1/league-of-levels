@@ -70,17 +70,16 @@ tr {
 }
 
 #totalMastery {
-    font-size: 15px;
+    font-size: 16px;
 }
 
 #searchBar {
     float: right;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     background-color: transparent;
     border: 1px solid #dddddd;
     width: 40%;
     font-weight: lighter;
-    letter-spacing: 1px;
     font-size: 16px;
 }
 
@@ -88,15 +87,4 @@ tr {
     float: right;
     color: #bbbbbb;
 }
-
-#note {
-    margin-top: 10px;
-}
-
-
-
-
-
-
-
 

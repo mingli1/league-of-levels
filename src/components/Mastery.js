@@ -213,6 +213,7 @@ class Mastery extends React.Component {
                         </tbody>
                     </table>
                     </div>)}
+                <hr />
 
                 <div className="row footer">
                     <div className="col-xs-12">

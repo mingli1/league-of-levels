@@ -1,0 +1,28 @@
+.profile {
+    margin-top: 5%;
+    margin-bottom: 3%;
+}
+
+#summonerName {
+    font-size: 36px;
+    margin: 0;
+}
+
+#summonerLevel {
+    font-size: 24px;
+    margin: 0;
+    padding-left: 8px;
+}
+
+#lastActive {
+    padding-left: 8px;
+}
+
+.playerInfo {
+    padding-left: 24px;
+}
+
+#opgg {
+    float: right;
+    padding-top: 12px;
+}
