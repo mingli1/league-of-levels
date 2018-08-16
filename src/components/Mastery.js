@@ -120,7 +120,8 @@ class Mastery extends React.Component {
         return (
             <div>
                 <p>Total champion mastery level: {this.props.totalMastery}</p>
-                <input type="text" 
+                <input className="searchBar"
+                    type="text" 
                     placeholder="Search for champion..." 
                     name="champSearch" 
                     onChange={this.search}
@@ -162,10 +163,14 @@ class Mastery extends React.Component {
                             {this.state.data.map(function (champion, index) {
                                 const champName = 
                                     <div className="champ">
-                                        <img src={`http://ddragon.leagueoflegends.com/cdn/${key.GAME_VERSION}/img/champion/${champKeys.keys[champion.championId]}.png`}
-                                                alt={champion.championId}
-                                                width="32px" height="32px" />
-                                        <span className="champName">{champion.championName}</span>
+                                        <div className="champWrapper">
+                                            <img src={`http://ddragon.leagueoflegends.com/cdn/${key.GAME_VERSION}/img/champion/${champKeys.keys[champion.championId]}.png`}
+                                                    alt={champion.championId}
+                                                    width="32px" height="32px" />
+                                            <span className="champName">
+                                                <b>{champion.championName}</b>
+                                            </span>
+                                        </div>
                                     </div>;
                                 const chest = champion.chestGranted ?
                                     (<img src={window.location.origin + '/images/chest.png'} 
@@ -200,7 +205,9 @@ class Mastery extends React.Component {
                     </table>
                     </div>)}
 
-                <p>Note: Champions not displayed have not been played by this summoner.</p>
+                <div className="footer">
+                    <p>Note: Champions not displayed have not been played by this summoner.</p>
+                </div>
             </div>
         );
     }
