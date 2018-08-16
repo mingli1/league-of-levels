@@ -63,3 +63,40 @@ tr {
     vertical-align: middle;
     height: 40px;
 }
+
+.tableTop {
+    width: 92%;
+    margin: 0 auto;
+}
+
+#totalMastery {
+    float: left;
+    margin: 0;
+    font-size: 15px;
+}
+
+#searchBar {
+    float: right;
+    margin-bottom: 4px;
+    background-color: transparent;
+    border: 1px solid #dddddd;
+    width: 40%;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    font-size: 16px;
+}
+
+.searchIcon {
+    float: right;
+    color: #bbbbbb;
+}
+
+
+
+
+
+
+
+
+
+

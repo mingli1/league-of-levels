@@ -119,13 +119,22 @@ class Mastery extends React.Component {
     render() {
         return (
             <div>
-                <p>Total champion mastery level: {this.props.totalMastery}</p>
-                <input className="searchBar"
-                    type="text" 
-                    placeholder="Search for champion..." 
-                    name="champSearch" 
-                    onChange={this.search}
-                />
+                <div className="row tableTop">
+                    <div className="col-xs-6">
+                        <p id="totalMastery">
+                            Total champion mastery level: <b>{this.props.totalMastery}</b>
+                        </p>
+                    </div>
+                    <div className="col-xs-6">
+                        <input id="searchBar" 
+                            type="text" 
+                            placeholder="Search for champion..." 
+                            name="champSearch" 
+                            onChange={this.search}
+                        />
+                        <i className="material-icons searchIcon">search</i>
+                    </div>
+                </div>
 
                 {this.state.data == null ? null : 
                     (<div className="tableWrapper">
