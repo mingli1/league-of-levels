@@ -214,8 +214,10 @@ class Mastery extends React.Component {
                     </table>
                     </div>)}
 
-                <div className="footer">
-                    <p>Note: Champions not displayed have not been played by this summoner.</p>
+                <div className="row footer">
+                    <div className="col-xs-12">
+                        <p id="note">Note: Champions not displayed have not been played by this summoner.</p>
+                    </div>
                 </div>
             </div>
         );

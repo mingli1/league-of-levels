@@ -91,7 +91,14 @@ tr {
     color: #bbbbbb;
 }
 
+.footer {
+    width: 92%;
+    margin: 0 auto;
+}
 
+#note {
+    margin-top: 10px;
+}
 
 
 
