@@ -3,7 +3,7 @@
 }
 
 .masteryTable {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     border: 1px solid #dddddd;
 }
@@ -52,6 +52,11 @@
 
 .champWrapper {
     display: flex;
+    align-items: center;
+}
+
+img {
+    flex: 0 0 auto;
 }
 
 .champName {
@@ -64,14 +69,7 @@ tr {
     height: 40px;
 }
 
-.tableTop {
-    width: 92%;
-    margin: 0 auto;
-}
-
 #totalMastery {
-    float: left;
-    margin: 0;
     font-size: 15px;
 }
 
@@ -89,11 +87,6 @@ tr {
 .searchIcon {
     float: right;
     color: #bbbbbb;
-}
-
-.footer {
-    width: 92%;
-    margin: 0 auto;
 }
 
 #note {

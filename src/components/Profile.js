@@ -59,7 +59,7 @@ class Profile extends React.Component {
                 { (typeof this.state.summonerJson !== 'undefined' && 
                     typeof this.state.totalMastery !== 'undefined' &&
                     typeof this.state.masteryJson !== 'undefined') ? 
-                        (<div>
+                        (<div className="container">
                             <PlayerProfile {...this.state.summonerJson} regionName={this.state.regionName} />
                             <Mastery masteryJson={this.state.masteryJson} totalMastery={this.state.totalMastery} />
                         </div>) :

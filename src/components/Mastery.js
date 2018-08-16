@@ -120,7 +120,7 @@ class Mastery extends React.Component {
         return (
             <div>
                 <div className="row tableTop">
-                    <div className="col-xs-6">
+                    <div className="col-xs-6 test">
                         <p id="totalMastery">
                             Total champion mastery level: <b>{this.props.totalMastery}</b>
                         </p>

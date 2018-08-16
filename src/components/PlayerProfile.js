@@ -27,7 +27,7 @@ class PlayerProfile extends React.Component {
 
         return (
             <div>
-                <img src={this.getIcon(profileIconId)} alt={profileIconId}
+                <img className="img-circle" src={this.getIcon(profileIconId)} alt={profileIconId}
                     width="100px" height="100px" />
                 <p>{'(' + region + ') ' + summonerName}</p>
                 <p>Level: {summonerLevel}</p>
