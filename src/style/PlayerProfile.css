@@ -3,6 +3,14 @@
     margin-bottom: 3%;
 }
 
+.imageCol {
+    width: 11%;
+}
+
+.textCol {
+    width: 64%;
+}
+
 #summonerName {
     font-size: 36px;
     margin: 0;

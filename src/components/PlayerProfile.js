@@ -29,11 +29,11 @@ class PlayerProfile extends React.Component {
         return (
             <div className="profile">
                 <div className="row header">
-                    <div className="col-xs-1">
-                        <img className="img-circle" src={this.getIcon(profileIconId)} alt={profileIconId}
+                    <div className="col-xs-1 imageCol">
+                        <img className="img-circle img-responsive" src={this.getIcon(profileIconId)} alt={profileIconId}
                             width="100px" height="100px" />
                     </div>
-                    <div className="col-xs-8">
+                    <div className="col-xs-7 textCol">
                         <div className="playerInfo">
                             <p id="summonerName"><b>{'(' + region + ') ' + summonerName}</b></p>
                             <p id="summonerLevel">Level: {summonerLevel}</p>
