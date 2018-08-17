@@ -3,6 +3,8 @@ import React from 'react';
 import PlayerProfile from './PlayerProfile';
 import Mastery from './Mastery';
 
+import '../style/Profile.css';
+
 // api key
 var key = require('../Key.js');
 
@@ -63,7 +65,7 @@ class Profile extends React.Component {
                             <PlayerProfile {...this.state.summonerJson} regionName={this.state.regionName} />
                             <Mastery masteryJson={this.state.masteryJson} totalMastery={this.state.totalMastery} />
                         </div>) :
-                        <p>Fetching...</p> 
+                        <p id="loading">Fetching...</p> 
                 }
             </div>
         );
