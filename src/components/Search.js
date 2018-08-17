@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../style/Search.css'
 
 // a search component that contains a selection of regions and input for summoner name
 class Search extends React.Component {
@@ -25,9 +26,10 @@ class Search extends React.Component {
     render() {
         return (
             <div>
-                <h3>Search for Summoner:</h3>
-                <form>
-                    <select id="regionSelect" onChange={this.handleSelectChange}>
+                <form className="form-inline">
+                    <select className="form-control form-control-xs" 
+                        data-width="100%"
+                        id="regionSelect" onChange={this.handleSelectChange}>
                         <option value="na1">NA</option>
                         <option value="euw1">EUW</option>
                         <option value="kr">KR</option>
@@ -36,14 +38,14 @@ class Search extends React.Component {
                     </select>
 
                     <input 
+                        className="form-control" 
                         type="text" 
-                        name="summonerSearch" 
-                        placeholder="Enter a summoner name..." 
+                        placeholder="Search for summoner..." 
                         onChange={this.handleInputChange} 
                     />
 
                     <Link to={{ pathname: `/summoner/${this.state.region}-${this.state.summonerName}` }}>
-                        <button>Search</button>
+                        <button type="button" className="btn btn-primary">Search</button>
                     </Link>
                 </form>
             </div>

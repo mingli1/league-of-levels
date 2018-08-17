@@ -127,6 +127,7 @@ class Mastery extends React.Component {
                     </div>
                     <div className="col-xs-6">
                         <input id="searchBar" 
+                            className="form-control"
                             type="text" 
                             placeholder="Search for champion..." 
                             name="champSearch" 

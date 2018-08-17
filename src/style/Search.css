@@ -1,0 +1,13 @@
+input[type="text"] {
+    background-color: transparent;
+    border: 1px solid #dddddd;
+    font-weight: lighter;
+    font-size: 16px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.btn {
+    width: 100px;
+    font-size: 16px;
+}
