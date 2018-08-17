@@ -32,11 +32,26 @@ class Profile extends React.Component {
         return host;
     }
 
+    componentDidMount = () => {
+        this.fetchData(this.props.match.params.sid);
+    }
+
+    // fetches the data when searching from a profile page rather than the home page
+    componentWillReceiveProps = (nextProps) => {
+        if (this.props.match.params.sid !== nextProps.match.params.sid) {
+            this.setState({
+                summonerJson: undefined,
+                masteryJson: undefined,
+                totalMastery: undefined
+            });
+            this.fetchData(nextProps.match.params.sid);
+        }
+    }
+
     // performs a call to the LoL API to search for summoners by summoner name
-    componentDidMount = async () => {
+    fetchData = async (sid) => {
         // getting region code and summoner name from the url
-        const raw = this.props.match.params.sid;
-        const data = raw.split('-');
+        const data = sid.split('-');
         const regionHost = data[0];
         const summonerName = data[1];
         document.title = summonerName + ' - League of Levels';
@@ -46,6 +61,11 @@ class Profile extends React.Component {
         // API call for retrieving summoner info
         const summonerJson = await fetch(`${key.proxy}https://${regionHost}.api.riotgames.com/lol/summoner/v3/summoners/by-name/${summonerName}?api_key=${key.API_KEY}`).then(response => response.json());
         this.setState({ summonerJson: summonerJson });
+        // summoner not found
+        if (this.state.summonerJson.status != null) {
+            console.log(this.state.summonerJson.status);
+            return;
+        }
 
         // API call for total summoner mastery
         const totalMasteryJson = await fetch(`${key.proxy}https://${regionHost}.api.riotgames.com/lol/champion-mastery/v3/scores/by-summoner/${summonerJson.id}?api_key=${key.API_KEY}`).then(response => response.json());
@@ -73,7 +93,16 @@ class Profile extends React.Component {
                             </div>
                         </div>
                         ) :
-                        <p id="loading">Fetching...</p> 
+                        (this.state.summonerJson != null && this.state.summonerJson.status != null ? 
+                            <div>
+                                <Header />
+                                <div className="error">
+                                    <h1>Error: Summoner could not be found.</h1>
+                                    <h4>Did you enter the correct summoner name and region?</h4>
+                                </div>
+                            </div> :
+                            <p id="loading">Fetching...</p> 
+                        )
                 }
             </div>
         );

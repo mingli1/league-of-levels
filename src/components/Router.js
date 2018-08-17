@@ -17,7 +17,7 @@ const Router = () => (
     <BrowserRouter>
         <Switch>
             <Route path="/" component={Search} exact />
-            <Route path="/summoner/:sid" component={Profile} />
+            <Route path="/summoner/:sid" component={Profile} exact />
         </Switch>
     </BrowserRouter>
 );
