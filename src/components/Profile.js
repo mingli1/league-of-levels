@@ -2,6 +2,7 @@ import React from 'react';
 
 import PlayerProfile from './PlayerProfile';
 import Mastery from './Mastery';
+import Header from './Header';
 
 import '../style/Profile.css';
 
@@ -61,10 +62,17 @@ class Profile extends React.Component {
                 { (typeof this.state.summonerJson !== 'undefined' && 
                     typeof this.state.totalMastery !== 'undefined' &&
                     typeof this.state.masteryJson !== 'undefined') ? 
-                        (<div className="container">
-                            <PlayerProfile {...this.state.summonerJson} regionName={this.state.regionName} />
-                            <Mastery masteryJson={this.state.masteryJson} totalMastery={this.state.totalMastery} />
-                        </div>) :
+                        (
+                        <div>
+                            <div>
+                                <Header />
+                            </div>
+                            <div className="container">
+                                <PlayerProfile {...this.state.summonerJson} regionName={this.state.regionName} />
+                                <Mastery masteryJson={this.state.masteryJson} totalMastery={this.state.totalMastery} />
+                            </div>
+                        </div>
+                        ) :
                         <p id="loading">Fetching...</p> 
                 }
             </div>

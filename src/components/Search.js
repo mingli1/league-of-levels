@@ -25,7 +25,7 @@ class Search extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="search">
                 <form className="form-inline">
                     <select className="form-control form-control-xs" 
                         data-width="100%"
