@@ -6,3 +6,17 @@
     transform: translate(-50%, -50%);
     padding-right: 40px;
 }
+
+.github {
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 4px;
+    letter-spacing: 1px;
+    margin-right: 20px;
+}
+
+.gitlink:link, .gitlink:visited, .gitlink:hover, .gitlink:active {
+    color: #ffffff;
+    text-decoration: none;
+}

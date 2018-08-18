@@ -17,7 +17,15 @@ class Header extends React.Component {
                         League of Levels
                     </div>
                 </Link>
-                {this.props.showSearch ? <Search /> : null}
+                {this.props.showSearch ? <Search /> : 
+                    <div className="github">
+                        <a className="gitlink" href="https://www.github.com/mingli1/league-of-levels" target="_blank">
+                            <img src={window.location.origin + '/images/github.svg'} alt="github"
+                                width="45px" height="45px" />
+                            GitHub
+                        </a>
+                    </div>
+                }
             </div>
         );
     }
