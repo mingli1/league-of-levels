@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif');
+
 .bar {
     position: fixed;
     overflow: hidden;
@@ -11,4 +13,19 @@
 .search {
     float: right;
     margin: 8px;
+}
+
+.logo {
+    float: left;
+    font-family: 'Bree Serif', serif;
+    text-align: center;
+    font-size: 30px;
+    color: #ffecb5;
+    padding-left: 10px;
+    margin-top: 5px;
+}
+
+img {
+    margin-right: 14px;
+    margin-bottom: 3px;
 }

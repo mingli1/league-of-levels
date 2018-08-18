@@ -85,7 +85,7 @@ class Profile extends React.Component {
                         (
                         <div>
                             <div>
-                                <Header />
+                                <Header showSearch={true} />
                             </div>
                             <div className="container">
                                 <PlayerProfile {...this.state.summonerJson} regionName={this.state.regionName} />
@@ -95,7 +95,7 @@ class Profile extends React.Component {
                         ) :
                         (this.state.summonerJson != null && this.state.summonerJson.status != null ? 
                             <div>
-                                <Header />
+                                <Header showSearch={true} />
                                 <div className="error">
                                     <h1>Error: Summoner could not be found.</h1>
                                     <h4>Did you enter the correct summoner name and region?</h4>

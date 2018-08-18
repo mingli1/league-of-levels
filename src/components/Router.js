@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 // components
-import Search from './Search';
+import Home from './Home';
 import Profile from './Profile';
 
 // React router for this app
@@ -16,7 +16,7 @@ import Profile from './Profile';
 const Router = () => (
     <BrowserRouter>
         <Switch>
-            <Route path="/" component={Search} exact />
+            <Route path="/" component={Home} exact />
             <Route path="/summoner/:sid" component={Profile} exact />
         </Switch>
     </BrowserRouter>
