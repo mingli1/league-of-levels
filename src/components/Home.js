@@ -17,7 +17,8 @@ class Home extends React.Component {
                 <Search home={true} />
                 <div className="title">
                     <h1 id="large-header">Find champion mastery data</h1>
-                    <h4 id="sub-header">Look up a summoner name and get information about their champions</h4>
+                    <h4 id="sub-header">Look up a summoner and fetch information 
+                        about <br />their champions for League of Legends</h4>
                 </div>
             </div>
         );
