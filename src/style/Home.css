@@ -1,4 +1,5 @@
 .searchHome {
+    width: 60%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -19,4 +20,32 @@
 .gitlink:link, .gitlink:visited, .gitlink:hover, .gitlink:active {
     color: #ffffff;
     text-decoration: none;
+}
+
+.searchSumm {
+    height: 50px;
+}
+
+.searchSumm:focus {
+    font-size: 24px;
+}
+
+.searchSumm::-webkit-input-placeholder {
+    font-size: 24px;
+}
+
+.searchSumm::-moz-placeholder {
+    font-size: 24px;
+}
+
+.regionSelect {
+    height: 50px;
+    font-size: 24px;
+}
+
+.searchButton {
+    width: 100%;
+    height: 50px;
+    font-size: 24px;
+    font-weight: bold;
 }

@@ -6,6 +6,10 @@ import '../style/Home.css';
 // the home page of the app containing the search bar and a nav bar
 class Home extends React.Component {
 
+    componentDidMount = () => {
+        document.title = 'League of Levels';
+    }
+
     render() {
         return (
             <div>
