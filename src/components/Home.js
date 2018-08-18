@@ -15,6 +15,10 @@ class Home extends React.Component {
             <div>
                 <Header showSearch={false} />
                 <Search home={true} />
+                <div className="title">
+                    <h1 id="large-header">Find champion mastery data</h1>
+                    <h4 id="sub-header">Look up a summoner name and get information about their champions</h4>
+                </div>
             </div>
         );
     }
