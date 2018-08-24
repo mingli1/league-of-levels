@@ -1,5 +1,5 @@
 # League of Levels
-Check it out at https://leagueoflevels.herokuapp.com/ (API calls won't be working until Riot Games gives me a production key in maybe a week or so)
+Check it out at https://leagueoflevels.herokuapp.com/
 
 Inspired by Derpthemeus's [ChampionMasteryLookup](https://championmasterylookup.derpthemeus.com/) (check his site out it has more features than mine)
 ## About
